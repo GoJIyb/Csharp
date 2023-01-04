@@ -26,7 +26,7 @@ namespace Lab5
             dialouges.Welcome();
             dialouges.Ask1();
 
-            Sportswear clothesname = dialouges.Answer1();      // в цьому рядку зберігаємо вибір
+            Sportswear clothesname = dialouges.Answer1();
             seller.Order(clothesname);
             consult.TakeOrder(clothesname);
 
@@ -47,7 +47,7 @@ namespace Lab5
     class Customer : Person
     {
         public string name = "Покупець";
-        public int Money = 4000;
+        public int Money = 2500;
         #region Methods 
         public void Pay()
         {
@@ -55,10 +55,19 @@ namespace Lab5
         }
         public void Pay(Clothes clothes)
         {
-            Console.WriteLine($"{name} заплатив {clothes.Price} гривень");
             this.Money = Money - clothes.Price;
-            Console.WriteLine($"У {name} залишилося {Money} гривень");
+            if (Money >= 0)
+            {
+            Console.WriteLine($"{name} заплатив {clothes.Price} гривень");
+            Console.WriteLine($"У {name} лишилося {Money} гривень");
             Console.ReadLine();
+            }
+            else
+            {
+                this.Money = clothes.Price / 10;
+                Console.WriteLine($"{name} взяв розтрочку на товар та буде винен {Money} гривень протягом 10 мiсяцiв");
+                Console.ReadLine();
+            }
         }
         #endregion
     }
@@ -75,15 +84,11 @@ namespace Lab5
         }
 
         public string Name = "";
-        //public string Namess = "";
         public Employer()
         {
             Random rnd = new Random();
             var names = (Names)rnd.Next(0, 5);
             Name = names.ToString();
-
-            //var nnames = (Names)rnd.Next(0, 5);
-            //Namess = nnames.ToString();
         }
 
         public Clothes LetsWork(Sportswear _ordername)
@@ -92,18 +97,15 @@ namespace Lab5
             {
                 case Sportswear.Nike:
                     Nike nike = new Nike();
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Nike");
-                    Console.ReadLine();
+                    Console.WriteLine($"Пошук...");
                     return nike;
                 case Sportswear.Puma:
                     Puma puma = new Puma();
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Puma");
-                    Console.ReadLine();
+                    Console.WriteLine($"Пошук...");
                     return puma;
                 case Sportswear.Adidas:
                     Adidas adidas = new Adidas();
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Adidas ");
-                    Console.ReadLine();
+                    Console.WriteLine($"Пошук...");
                     return adidas;
                 default:
                     return null;
@@ -126,33 +128,27 @@ namespace Lab5
             {
                 case Sportswear.Nike:
                     _clothes = new Nike();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Nike {_clothes.Years} року, знаходиться на склад, сума до сплати:{_clothes.Price} грн");
-                    Console.ReadLine();
+                    Console.WriteLine($"Ваше замовлення спортивний костьюм Nike {_clothes.Years} року, знаходиться на склад,   цiна:{_clothes.Price} грн");
                     break;
                 case Sportswear.Puma:
                     _clothes = new Puma();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Puma {_clothes.Years} року, знаходиться на склад, сума до сплати:{_clothes.Price} грн");
-                    Console.ReadLine();
+                    Console.WriteLine($"Ваше замовлення спортивний костьюм Puma {_clothes.Years} року, знаходиться на склад,   цiна:{_clothes.Price} грн");
                     break;
                 case Sportswear.Adidas:
                     _clothes = new Adidas();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Adidas {_clothes.Years} року, знаходиться на склад, сума до сплати:{_clothes.Price} грн");
-                    Console.ReadLine();
+                    Console.WriteLine($"Ваше замовлення спортивний костьюм Adidas {_clothes.Years} року, знаходиться на склад, цiна:{_clothes.Price} грн");
                     break;
             }
             Console.WriteLine($"продавець викликає консультанта та передає замовлення");
-            Console.ReadLine();
         }
         public Clothes Return(Clothes clothes)
         {
             Console.WriteLine($"{Name} приносить ваше замовлення");
-            Console.ReadLine();
             return clothes;
         }
         public void Check(Clothes clothes)
         {
             Console.WriteLine($"З вас до сплати {clothes.Price} гривень");
-            Console.ReadLine();
         }
         #endregion
 
@@ -192,7 +188,7 @@ namespace Lab5
 
 
 
-    class Consult : Employer // Реалізувати патерн одинак в цьому класі(((
+    class Consult : Employer
     {
         Sportswear _ordername;
 
@@ -213,7 +209,6 @@ namespace Lab5
                     break;
             }
             Console.WriteLine($"Консультант {Name} отримав ваше замовлення, а саме {clotname}");
-            Console.ReadLine();
             _ordername = clothesname;
         }
 
@@ -223,16 +218,15 @@ namespace Lab5
             switch (_ordername)
             {
                 case Sportswear.Nike:
-                    Console.WriteLine($"Пошук...");
-                    Console.ReadLine();
+                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Nike");
                     return LetsWork(_ordername);
+
                 case Sportswear.Puma:
-                    Console.WriteLine($"Пошук...");
-                    Console.ReadLine();
+                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Puma");
                     return LetsWork(_ordername);
+
                 case Sportswear.Adidas:
-                    Console.WriteLine($"Пошук..."); 
-                    Console.ReadLine();
+                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Adidas"); 
                     return LetsWork(_ordername);
                 default:
                     return null;
