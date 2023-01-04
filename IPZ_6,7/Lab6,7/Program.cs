@@ -58,9 +58,9 @@ namespace Lab5
             this.Money = Money - clothes.Price;
             if (Money >= 0)
             {
-            Console.WriteLine($"{name} заплатив {clothes.Price} гривень");
-            Console.WriteLine($"У {name} лишилося {Money} гривень");
-            Console.ReadLine();
+                Console.WriteLine($"{name} заплатив {clothes.Price} гривень");
+                Console.WriteLine($"У {name} лишилося {Money} гривень");
+                Console.ReadLine();
             }
             else
             {
@@ -226,7 +226,7 @@ namespace Lab5
                     return LetsWork(_ordername);
 
                 case Sportswear.Adidas:
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Adidas"); 
+                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Adidas");
                     return LetsWork(_ordername);
                 default:
                     return null;
@@ -234,7 +234,7 @@ namespace Lab5
         }
         #endregion
     }
-    abstract class Clothes 
+    abstract class Clothes
     {
         #region Properties
         public int Price { get; set; }
@@ -243,7 +243,7 @@ namespace Lab5
         { }
         #endregion
     }
-    class Nike : Clothes 
+    class Nike : Clothes
     {
         #region Construct
         public Nike()
@@ -263,7 +263,7 @@ namespace Lab5
         }
         #endregion
     }
-    class Adidas : Clothes 
+    class Adidas : Clothes
     {
         #region Construct
         public Adidas()
