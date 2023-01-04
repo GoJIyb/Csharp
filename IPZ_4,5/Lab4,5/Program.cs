@@ -47,7 +47,7 @@ namespace Lab5
     class Customer : Person
     {
         public string name = "Покупець";
-        public int Money = 2500;
+        public int Money = 3000;
         #region Methods 
         public void Pay()
         {
@@ -185,8 +185,6 @@ namespace Lab5
         }
 
     }
-
-
 
     class Consult : Employer
     {

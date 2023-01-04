@@ -23,13 +23,6 @@
   </Class>
   <Class Name="Lab5.Employer" Collapsed="true">
     <Position X="5.5" Y="4.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Lab5.Employer.Names" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Program.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
