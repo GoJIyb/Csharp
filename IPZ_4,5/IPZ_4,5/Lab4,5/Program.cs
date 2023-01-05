@@ -46,7 +46,7 @@ namespace Lab5
         public Random _rnd = new Random();
         #endregion
 
-        internal Program Program
+        internal Program Program 
         {
             get => default;
             set
