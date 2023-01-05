@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingletoneMemento\SellingHistory.cs" />
+    <Compile Include="SingletoneMemento\SellingModel.cs" />
+    <Compile Include="SingletoneMemento\SellingsList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

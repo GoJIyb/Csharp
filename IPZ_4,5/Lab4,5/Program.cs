@@ -10,13 +10,15 @@ namespace Lab5
     {
         Nike,
         Puma,
-        Adidas,
+        Adidas
     }
 
     class Program
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = UTF8Encoding.UTF8;
+            SellingsList clients = SellingsList.GetInstance();
             Customer customer = new Customer();
             Seller seller = new Seller();
             Consult consult = new Consult();
@@ -33,7 +35,9 @@ namespace Lab5
             Clothes clothes = consult.Choose();
             seller.Return(clothes);
             seller.Check(clothes);
-            customer.Pay(clothes);
+            customer.Pay(clothes, clothesname);
+
+            Console.ReadKey();
         }
     }
 
@@ -42,32 +46,41 @@ namespace Lab5
         #region Properties
         public Random _rnd = new Random();
         #endregion
+
+        internal Program Program
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
     class Customer : Person
     {
-        public string name = "Покупець";
+        public string name = "Buyer";
         public int Money = 3000;
         #region Methods 
         public void Pay()
         {
-            Console.WriteLine($"У {name} в гаманцi {Money} гривень");
+            Console.WriteLine($"The {name} has {Money} UAH in his wallet");
         }
-        public void Pay(Clothes clothes)
+        public void Pay(Clothes clothes, Sportswear swName)
         {
             this.Money = Money - clothes.Price;
             if (Money >= 0)
             {
-            Console.WriteLine($"{name} заплатив {clothes.Price} гривень");
-            Console.WriteLine($"У {name} лишилося {Money} гривень");
-            Console.ReadLine();
+            Console.WriteLine($"The {name} paid {clothes.Price} UAH");
+            Console.WriteLine($"The {name} has {Money} UAH remained");
             }
             else
             {
                 this.Money = clothes.Price / 10;
-                Console.WriteLine($"{name} взяв розтрочку на товар та буде винен {Money} гривень протягом 10 мiсяцiв");
-                Console.ReadLine();
+                Console.WriteLine($"The {name} took an installment plan for the goods and will pay {Money} UAH within 10 months");
             }
+            SellingsList.GetInstance().AddSelling(clothes.Price.ToString());
+            var swpkg = new SportsWearPackage().MakePackage(clothes, new Package("Red"));
+            Console.WriteLine(name + " received " + swpkg.pkg.Color + " a package with his goods from " + swName.ToString());
         }
         #endregion
     }
@@ -75,12 +88,12 @@ namespace Lab5
     {
         public enum Names
         {
-            Кирило,
-            Iлля,
-            Данило,
-            Софiя,
-            Дiана,
-            Богданна
+            Kiril,
+            Ilia,
+            Danilo,
+            Sofia,
+            Diana,
+            Polina
         }
 
         public string Name = "";
@@ -97,15 +110,15 @@ namespace Lab5
             {
                 case Sportswear.Nike:
                     Nike nike = new Nike();
-                    Console.WriteLine($"Пошук...");
+                    Console.WriteLine($"Search...");
                     return nike;
                 case Sportswear.Puma:
                     Puma puma = new Puma();
-                    Console.WriteLine($"Пошук...");
+                    Console.WriteLine($"Search...");
                     return puma;
                 case Sportswear.Adidas:
                     Adidas adidas = new Adidas();
-                    Console.WriteLine($"Пошук...");
+                    Console.WriteLine($"Search...");
                     return adidas;
                 default:
                     return null;
@@ -128,27 +141,27 @@ namespace Lab5
             {
                 case Sportswear.Nike:
                     _clothes = new Nike();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Nike {_clothes.Years} року, знаходиться на склад,   цiна:{_clothes.Price} грн");
+                    Console.WriteLine($"Your order is a sports suit Nike {_clothes.Years}, in stock, price:{_clothes.Price} UAH");
                     break;
                 case Sportswear.Puma:
                     _clothes = new Puma();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Puma {_clothes.Years} року, знаходиться на склад,   цiна:{_clothes.Price} грн");
+                    Console.WriteLine($"Your order is a sports suit Puma {_clothes.Years}, in stock, price:{_clothes.Price} UAH");
                     break;
                 case Sportswear.Adidas:
                     _clothes = new Adidas();
-                    Console.WriteLine($"Ваше замовлення спортивний костьюм Adidas {_clothes.Years} року, знаходиться на склад, цiна:{_clothes.Price} грн");
+                    Console.WriteLine($"Your order is a sports suit Adidas {_clothes.Years}, in stock, price:{_clothes.Price} UAH");
                     break;
             }
-            Console.WriteLine($"продавець викликає консультанта та передає замовлення");
+            Console.WriteLine($"The seller gives the order to the consultant and submits the order");
         }
         public Clothes Return(Clothes clothes)
         {
-            Console.WriteLine($"{Name} приносить ваше замовлення");
+            Console.WriteLine($"{Name} brings your order");
             return clothes;
         }
         public void Check(Clothes clothes)
         {
-            Console.WriteLine($"З вас до сплати {clothes.Price} гривень");
+            Console.WriteLine($"You owe {clothes.Price} UAH");
         }
         #endregion
 
@@ -160,7 +173,7 @@ namespace Lab5
         public void Begin()
         {
             Customer customer = new Customer();
-            Console.WriteLine($"{customer.name} заходить в магазин одягу, у нього в гаманцi {customer.Money} гривень");
+            Console.WriteLine($"A {customer.name} enters a clothing store, he has {customer.Money} UAH in his wallet");
         }
 
         public Dialogues(Seller seller)
@@ -169,7 +182,7 @@ namespace Lab5
         }
         public void Welcome()
         {
-            Console.WriteLine($"Добрий день, мене звати {_seller.Name}, який бренд ви полюбляєте?");
+            Console.WriteLine($"Good afternoon, my name is {_seller.Name}, which brand do you like?");
         }
         public void Ask1()
         {
@@ -184,6 +197,13 @@ namespace Lab5
             return (Sportswear)index;
         }
 
+        internal Clothes Clothes
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
     class Consult : Employer
@@ -197,16 +217,16 @@ namespace Lab5
             switch (clothesname)
             {
                 case Sportswear.Nike:
-                    clotname = "костьюм Nike";
+                    clotname = "suit Nike";
                     break;
                 case Sportswear.Puma:
-                    clotname = "костьюм Puma";
+                    clotname = "suit Puma";
                     break;
                 case Sportswear.Adidas:
-                    clotname = "костьюм Adidas";
+                    clotname = "suit Adidas";
                     break;
             }
-            Console.WriteLine($"Консультант {Name} отримав ваше замовлення, а саме {clotname}");
+            Console.WriteLine($"Consultant {Name} has received your order, which is a {clotname} suit");
             _ordername = clothesname;
         }
 
@@ -214,19 +234,19 @@ namespace Lab5
 
         public Clothes Choose()
         {
-            Console.WriteLine($"{Name} приступає до пошуку");
+            Console.WriteLine($"{Name} begins the search");
             switch (_ordername)
             {
                 case Sportswear.Nike:
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Nike");
+                    Console.WriteLine($"The employee went to the warehouse to find your product, a sports suit Nike");
                     return LetsWork(_ordername);
 
                 case Sportswear.Puma:
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Puma");
+                    Console.WriteLine($"The employee went to the warehouse to find your product, a sports suit Puma");
                     return LetsWork(_ordername);
 
                 case Sportswear.Adidas:
-                    Console.WriteLine($"Працiвник вiдправився на склад щоб знайти ваш товар, спортивний костьюм Adidas"); 
+                    Console.WriteLine($"The employee went to the warehouse to find your product, a sports suit Adidas");
                     return LetsWork(_ordername);
                 default:
                     return null;
@@ -234,11 +254,20 @@ namespace Lab5
         }
         #endregion
     }
-    abstract class Clothes 
+    public abstract class Clothes 
     {
         #region Properties
         public int Price { get; set; }
         public int Years { get; set; }
+
+        internal Program Program
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public Clothes()
         { }
         #endregion
@@ -252,6 +281,14 @@ namespace Lab5
             Years = 2023;
         }
         #endregion
+
+        public Sportswear Sportswear
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
     class Puma : Clothes
     {
@@ -262,6 +299,14 @@ namespace Lab5
             Years = 2022;
         }
         #endregion
+
+        public Sportswear Sportswear
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
     class Adidas : Clothes 
     {
@@ -273,5 +318,37 @@ namespace Lab5
             Years = 2022;
         }
         #endregion
+
+        public Sportswear Sportswear
+        {
+            get => default;
+            set
+            {
+            }
+        }
+    }
+    public class Package // Фасад реалізований у пакувальнику та запакованому спортивному одягу
+    {
+        public string Color { get; set; }
+
+        public Package(string color)
+        {
+            Color = color;
+        }
+    }
+
+    public class SportsWearPackage // Фасад той що був згаданий вище
+    {
+        public Clothes ct { get; set; }
+        public Package pkg { get; set; }
+        public SportsWearPackage() { }
+
+        public SportsWearPackage MakePackage(Clothes ct, Package pkg)
+        {
+            this.ct = ct;
+            this.pkg = pkg;
+
+            return this;
+        }
     }
 }
