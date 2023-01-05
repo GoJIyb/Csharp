@@ -10,9 +10,18 @@ namespace Lab5
     {
         public string Name { get; set; }
 
+
         public SellingModel(string name)
         {
             Name = name;
         }
+        internal SellingsList SellingsList
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
     }
 }

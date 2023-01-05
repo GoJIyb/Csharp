@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Lab5.Program" Collapsed="true">
-    <Position X="6" Y="0.75" Width="1.75" />
+    <Position X="9.5" Y="0.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Lab5.Person" Collapsed="true">
-    <Position X="2.75" Y="2.25" Width="1.5" />
+    <Position X="4" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -18,45 +18,45 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Lab5.Customer" Collapsed="true">
-    <Position X="5" Y="3.5" Width="1.5" />
+    <Position X="6.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Lab5.Employer" Collapsed="true">
-    <Position X="1.5" Y="3.5" Width="1.5" />
+    <Position X="2.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Lab5.Seller" Collapsed="true">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="1.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Lab5.Dialogues" Collapsed="true">
-    <Position X="14" Y="3.5" Width="1.5" />
+    <Position X="1.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAEAgAAAACAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>QAEAgAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Clothes" />
+      <Property Name="Seller" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Lab5.Consult" Collapsed="true">
-    <Position X="2.75" Y="5.75" Width="1.5" />
+    <Position X="4" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Lab5.Clothes" Collapsed="true">
-    <Position X="9.5" Y="2.25" Width="1.5" />
+    <Position X="15.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAQAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -66,7 +66,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Lab5.Nike" Collapsed="true">
-    <Position X="7.25" Y="3.5" Width="1.5" />
+    <Position X="13.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -76,7 +76,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Lab5.Puma" Collapsed="true">
-    <Position X="9.5" Y="3.5" Width="1.5" />
+    <Position X="15.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -86,7 +86,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Lab5.Adidas" Collapsed="true">
-    <Position X="11.75" Y="3.5" Width="1.5" />
+    <Position X="17.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -95,8 +95,58 @@
       <Property Name="Sportswear" />
     </ShowAsAssociation>
   </Class>
+  <Class Name="Lab5.Package" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Customer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Lab5.SportsWearPackage" Collapsed="true">
+    <Position X="6.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAgAACAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab5.SellingsList" Collapsed="true">
+    <Position X="9.75" Y="2.25" Width="1.5" />
+    <InheritanceLine Type="Lab5.Program" FixedToPoint="true">
+      <Path>
+        <Point X="10.375" Y="1.312" />
+        <Point X="10.375" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACgEAAAAAAAAAAAAAAQAAAAABAAAAAAgAAAAgAAAAAE=</HashCode>
+      <FileName>SingletoneMemento\SellingsList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab5.SellingModel" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SingletoneMemento\SellingModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SellingsList" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Lab5.SellingHistory" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>SingletoneMemento\SellingHistory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SellingsList" />
+    </ShowAsAssociation>
+  </Class>
   <Enum Name="Lab5.Sportswear" Collapsed="true">
-    <Position X="9.5" Y="5" Width="1.5" />
+    <Position X="15.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAAAAAAABA=</HashCode>
       <FileName>Program.cs</FileName>

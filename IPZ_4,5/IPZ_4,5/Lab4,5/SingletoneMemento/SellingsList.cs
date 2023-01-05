@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Lab5
 {
-    internal sealed class SellingsList // Список продажів
+    internal sealed class SellingsList// Список продажів
+: Program
     {
         private List<SellingModel> Sellings = new List<SellingModel>();
-        private SellingHistory sellingHistory  = new SellingHistory();
+        private SellingHistory sellingHistory = new SellingHistory();
         private static SellingsList _instance = null;
 
         private SellingsList()
-        {}
+        { }
 
         public static SellingsList GetInstance()
         {

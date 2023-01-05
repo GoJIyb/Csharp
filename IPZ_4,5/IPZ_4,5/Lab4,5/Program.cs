@@ -17,7 +17,6 @@ namespace Lab5
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = UTF8Encoding.UTF8;
             SellingsList clients = SellingsList.GetInstance();
             Customer customer = new Customer();
             Seller seller = new Seller();
@@ -197,7 +196,7 @@ namespace Lab5
             return (Sportswear)index;
         }
 
-        internal Clothes Clothes
+        internal Seller Seller
         {
             get => default;
             set
@@ -327,7 +326,7 @@ namespace Lab5
             }
         }
     }
-    public class Package // Фасад реалізований у пакувальнику та запакованому спортивному одягу
+    public class Package : SportsWearPackage// Фасад реалізований у пакувальнику та запакованому спортивному одягу
     {
         public string Color { get; set; }
 
@@ -335,6 +334,14 @@ namespace Lab5
         {
             Color = color;
         }
+        internal Customer Customer
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
     }
 
     public class SportsWearPackage // Фасад той що був згаданий вище

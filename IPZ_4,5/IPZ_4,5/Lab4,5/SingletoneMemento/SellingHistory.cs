@@ -14,5 +14,13 @@ namespace Lab5
         {
             History = new Stack<SellingModel>();
         }
+
+        internal SellingsList SellingsList
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
